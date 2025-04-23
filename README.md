@@ -11,12 +11,11 @@
 Hola, somos el equipo umizumi, capas de todo, si dejas migajas, las levantamos capaz y me lleno
 
 
-| Rank | Lenguajes     |
+| Rank | Personalidad  |
 |-----:|---------------|
 |     1|Arriba el cona |
 |     2|  La hija emo  |
-|     3| Los vaqueros 
-         pa´ mi bolsa|
+|     3| Los vaqueros pa´ mi bolsa|
 
   <!--
 **XanderM30/XANDERM30** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
