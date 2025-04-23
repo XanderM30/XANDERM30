@@ -5,11 +5,17 @@ Bienvenidos al cuartel oficial del Equipo Umizoomi 🚀
 Un trío dinámico, diminuto pero imparable. Si hay migajas en el camino, las recogemos...
 capaz y hasta armamos un buffet. 💥🍌🍞
 
-<details> <summary>🌟 Nuestra Personalidad (¡click aquí!)</summary>
-💎 Miembro	🌈 Personalidad
-Xander	"¡Arriba el cona!" – Siempre en modo turbo 💪
-Andrea	"La hija emo" – Oscura pero adorable 🖤🌧️
-Jocelyn	"Los vaqueros pa’ mi bolsa" – 100% estilo y flow 🤠👜
+<details>
+<summary>🌟 Nuestra Personalidad (¡click aquí!)</summary>
+
+<br>
+
+| 💎 Miembro | 🌈 Personalidad                                |
+|------------|-----------------------------------------------|
+| **Xander** | "¡Arriba el cona!" – Siempre en modo turbo 💪 |
+| **Andrea** | "La hija emo" – Oscura pero adorable 🖤🌧️     |
+| **Jocelyn**| "Los vaqueros pa’ mi bolsa" – 100% flow 🤠👜   |
+
 </details>
 🎯 Nuestra Misión
 Salvar el día, resolver problemas, y hacerlo con estilo.
