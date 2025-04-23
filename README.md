@@ -12,7 +12,7 @@ capaz y hasta armamos un buffet. 💥🍌🍞
 
 | 💎 Miembro | 🌈 Personalidad                                |
 |------------|-----------------------------------------------|
-| **Xander** | "¡Arriba el cona!" – Siempre en modo turbo 💪 |
+| **Xander** | "¡Dejenme las sobras, tengo hambre!" – Hambriento 💪 |
 | **Andrea** | "La hija emo" – Oscura pero adorable 🖤🌧️     |
 | **Jocelyn**| "Los vaqueros pa’ mi bolsa" – 100% flow 🤠👜   |
 
