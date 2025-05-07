@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Integrador</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- Modificar rutas de los archivos CSS y JS -->
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Estilos generales -->
+    <link rel="stylesheet" href="../css/modal.css"> <!-- Estilos del modal -->
+</head>
+
+<body>
+    <!-- Pantalla Inicial -->
+    <div class="container" id="homeScreen">
+        <h1>Proyecto Integrador</h1>
+
+        <a href="#" class="btn" id="startButton">
+            <i class="fas fa-play"></i> Iniciar
+        </a>
+
+        <p>Síguenos en nuestras redes sociales</p>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+
+        <ul class="team">
+            <li><i class="fas fa-user"></i> Jocelyn Corona Mondragón</li>
+            <li><i class="fas fa-user"></i> Andrea Sofía González Castellanos</li>
+            <li><i class="fas fa-user"></i> Alexander Álvaro López</li>
+        </ul>
+    </div>
+
+    <!-- Botones flotantes -->
+    <div class="contact-btn"><i class="fas fa-phone-alt"></i></div>
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <!-- Tache para cerrar el modal -->
+            <span class="close">&times;</span>
+            <h2>Contacto</h2>
+            <ul>
+                <li><i class="fas fa-phone-alt"></i> Teléfono: +52 123 456 7890</li>
+                <li><i class="fas fa-envelope"></i> Correo: contacto@proyecto.com</li>
+                <li><i class="fab fa-whatsapp"></i> WhatsApp: +52 987 654 3210</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modificar las rutas de los archivos JS -->
+    
+    <script src="../js/modal.js"></script> <!-- Enlazar con el archivo JS del modal -->
+</body>
+
+</html>
