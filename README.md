@@ -1,6 +1,6 @@
 👋 ¡Holaaa, Mundo! 
 Bienvenidos al cuartel oficial del Equipo Umizoomi 🚀
-<picture> <source media="(prefers-color-scheme: dark)" srcset="https://thumbnails.cbsig.net/CBS_Production_Entertainment_VMS/2020/11/13/1819263555551/NICKELODEON_TEAMUMIZOOMI_202_365775_1920x1080.jpg"> <source media="(prefers-color-scheme: light)" srcset="https://th.bing.com/th/id/OIP.sF4EI0U8jBDD1CP7nOpG0gHaGL?rs=1&pid=ImgDetMain"> <img alt="Team Umizoomi Style" src="https://th.bing.com/th/id/OIP.i3NspWFgohVBB541m8csCwHaNK?rs=1&pid=ImgDetMain"> </picture>
+<picture> <source media="(prefers-color-scheme: dark)" srcset="https://thumbnails.cbsig.net/CBS_Production_Entertainment_VM S/2020/11/13/1819263555551/NICKELODEON_TEAMUMIZOOMI_202_365775_1920x1080.jpg"> <source media="(prefers-color-scheme: light)" srcset="https://th.bing.com/th/id/OIP.sF4EI0U8jBDD1CP7nOpG0gHaGL?rs=1&pid=ImgDetMain"> <img alt="Team Umizoomi Style" src="https://th.bing.com/th/id/OIP.i3NspWFgohVBB541m8csCwHaNK?rs=1&pid=ImgDetMain"> </picture>
 🧠 ¿Quiénes somos?
 Un trío dinámico, diminuto pero imparable. Si hay migajas en el camino, las recogemos...
 capaz y hasta armamos un buffet (No que un Mexico sin hambre Claudia). 💥🍌🍞
