@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selección de opción</title>
+
+  <!-- Fuente desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="stylesheet" href="../css/seleccionopcion.css">
+
+</head>
+
+<body>
+  <div class="container" id="homeScreen">
+    <div class="square-container">
+      <div class="container">
+        <h1 class="welcome-text">¡Bienvenido a la Selección de Opciones!</h1>
+        <a href="#" class="btn">
+          <i class="fas fa-clipboard-list"></i> Pase de lista
+        </a>
+        <a href="#" class="btn">
+          <i class="fas fa-project-diagram"></i> Proyecto de Lenguaje de interfaz
+        </a>
+
+        <a href="index.html" class="btn btn-small">
+          <i class="fas fa-arrow-left"></i> Regresar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-btn" title="Contacto">
+    <i class="fas fa-phone-alt"></i>
+  </div>
+
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeContact">&times;</span>
+      <h2><i class="fas fa-phone-alt modal-icon"></i> Contacto</h2>
+      <ul class="modal-text">
+        <li><i class="fas fa-phone-alt"></i> Teléfono: +52 123 456 7890</li>
+        <li><i class="fas fa-envelope"></i> Correo: contacto@proyecto.com</li>
+        <li><i class="fab fa-whatsapp"></i> WhatsApp: +52 987 654 3210</li>
+      </ul>
+    </div>
+  </div>
+  <div class="background-decore"></div> <!-- AQUÍ ESTÁ BIEN -->
+  <script src="../js/modal.js"></script>
+</body>
+
+</html>
