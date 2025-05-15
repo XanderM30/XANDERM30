@@ -1,24 +1,44 @@
-// Obtener el modal, el tache y el botón de contacto
-const modal = document.getElementById("contactModal");
-const closeBtn = document.querySelector(".close");
+// Obtener elementos
+const aboutModal = document.getElementById("aboutModal");
+const aboutBtn = document.querySelector(".about-btn");
+const closeAbout = document.getElementById("closeAbout");
+
+const contactModal = document.getElementById("contactModal");
 const contactBtn = document.querySelector(".contact-btn");
+const closeContact = contactModal.querySelector(".close");
 
-// Mostrar el modal cuando se hace clic en el botón de contacto
-contactBtn.onclick = () => {
-    console.log("Abriendo modal...");
-    modal.style.display = "flex";  // Mostrar el modal
-};
+// Asegurarnos de que los modales no se muestren al cargar la página
+aboutModal.style.display = "none"; // Se asegura de que el modal de "Sobre el Proyecto" esté oculto
+contactModal.style.display = "none"; // Se asegura de que el modal de "Contacto" esté oculto
 
-// Cerrar el modal cuando se da clic en el tache (x)
-closeBtn.onclick = () => {
-    console.log("Cerrando modal...");
-    modal.style.display = "none";  // Ocultar el modal
-};
+// Abrir el modal de "Sobre el Proyecto"
+aboutBtn.addEventListener("click", function() {
+    aboutModal.style.display = "flex"; // Mostrar el modal
+});
 
-// Cerrar el modal si se hace clic fuera de la ventana modal
-window.onclick = (event) => {
-    if (event.target === modal) {
-        console.log("Cerrando modal por clic fuera...");
-        modal.style.display = "none";  // Ocultar el modal
+// Cerrar el modal de "Sobre el Proyecto"
+closeAbout.addEventListener("click", function() {
+    aboutModal.style.display = "none"; // Ocultar el modal
+});
+
+// Abrir el modal de "Contacto"
+contactBtn.addEventListener("click", function() {
+    contactModal.style.display = "flex"; // Mostrar el modal de contacto
+});
+
+// Cerrar el modal de "Contacto"
+closeContact.addEventListener("click", function() {
+    contactModal.style.display = "none"; // Ocultar el modal de contacto
+});
+
+// Cerrar el modal de "Sobre el Proyecto" al hacer clic fuera de él
+window.addEventListener("click", function(event) {
+    if (event.target === aboutModal) {
+        aboutModal.style.display = "none"; // Ocultar el modal
     }
-};
+
+    // Cerrar el modal de "Contacto" al hacer clic fuera de él
+    if (event.target === contactModal) {
+        contactModal.style.display = "none"; // Ocultar el modal de contacto
+    }
+});

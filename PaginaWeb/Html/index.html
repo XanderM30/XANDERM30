@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Integrador</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 
     <!-- Modificar rutas de los archivos CSS y JS -->
     <link rel="stylesheet" href="../css/styles.css"> <!-- Estilos generales -->
@@ -14,15 +13,19 @@
 </head>
 
 <body>
+
+
+
     <!-- Pantalla Inicial -->
     <div class="container" id="homeScreen">
         <h1>Proyecto Integrador</h1>
 
-        <a href="#" class="btn" id="startButton">
+        <a href="seleccionopcion.html" class="btn" id="startButton">
             <i class="fas fa-play"></i> Iniciar
         </a>
 
-        <p>Síguenos en nuestras redes sociales</p>
+        <p class="social-text">Síguenos en nuestras redes sociales</p>
+
 
         <div class="social-links">
             <a href="https://www.instagram.com" target="_blank">
@@ -41,28 +44,38 @@
             <li><i class="fas fa-user"></i> Andrea Sofía González Castellanos</li>
             <li><i class="fas fa-user"></i> Alexander Álvaro López</li>
         </ul>
-    </div>
+    </div> <!-- Fin de #homeScreen -->
 
     <!-- Botones flotantes -->
-    <div class="contact-btn"><i class="fas fa-phone-alt"></i></div>
+<div class="about-btn"><i class="fas fa-info-circle"></i></div>
+<div class="contact-btn"><i class="fas fa-phone-alt"></i></div>
+
+    <!-- Modal "Sobre el Proyecto" -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAbout">&times;</span>
+            <h2><i class="fas fa-info-circle"></i> Sobre el Proyecto</h2>
+            <p>
+                Este proyecto integrador tiene como objetivo desarrollar una solución digital que facilite la gestión y seguimiento de procesos escolares, promoviendo el uso de herramientas tecnológicas accesibles, intuitivas y funcionales para estudiantes y docentes.
+            </p>
+        </div>
+    </div>
+
+ 
+
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <!-- Tache para cerrar el modal -->
             <span class="close">&times;</span>
             <h2>Contacto</h2>
             <ul>
-                <li><i class="fas fa-phone-alt"></i> Teléfono: +52 123 456 7890</li>
-                <li><i class="fas fa-envelope"></i> Correo: contacto@proyecto.com</li>
-                <li><i class="fab fa-whatsapp"></i> WhatsApp: +52 987 654 3210</li>
+                <li><i class="fas fa-phone-alt"></i> Teléfono: +52 713 100 4557</li>
+                <li><i class="fas fa-envelope"></i> Correo: alexanderalvaro742@gmail.com</li>
+                <li><i class="fab fa-whatsapp"></i> WhatsApp: +52 713 100 4557</li>
             </ul>
         </div>
     </div>
 
-
-
-
     <!-- Modificar las rutas de los archivos JS -->
-    
     <script src="../js/modal.js"></script> <!-- Enlazar con el archivo JS del modal -->
 </body>
 
