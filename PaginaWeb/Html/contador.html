@@ -64,7 +64,7 @@
     }
 
     .docente-nombre {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       font-weight: bold;
       color: white;
     }
@@ -105,6 +105,13 @@
       text-align: center;
     }
 
+      .menu-icon {
+      position: absolute;
+      left: 30px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #fff;
+    }
     .btn:hover {
       background-color: #D7AC71;
       transform: scale(1.1);
@@ -167,9 +174,9 @@
   <div id="mySidebar" class="sidebar">
     <span class="closebtn" onclick="closeNav()">&times;</span>
     <a href="#">Inicio</a>
-    <a href="#">Perfil</a>
-    <a href="#">Ajustes</a>
-    <a href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+    <a href="Perfil.html">Perfil</a>
+    <a href="Ajustes.html">Ajustes</a>
+    <a href="Iniciarsecion.html" onclick="cerrarSesion()">Cerrar sesión</a>
   </div>
 
   <!-- Encabezado -->
@@ -215,5 +222,16 @@
       window.location.href = "login.html";
     }
   </script>
+
+     <script>
+  const cuentaActiva = JSON.parse(localStorage.getItem('usuarioActivo'));
+  
+  if (cuentaActiva && cuentaActiva.nombre) {
+    document.getElementById('docenteNombre').textContent = `Bienvenido, ${cuentaActiva.nombre}`;
+  } else {
+    // Si no hay sesión activa, redirige al login
+    window.location.href = 'login.html';
+  }
+</script>
 </body>
 </html>

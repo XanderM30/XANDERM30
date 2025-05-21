@@ -215,27 +215,60 @@
       </tbody>
     </table>
 
-    <button class="btn-save" onclick="guardarAsistencia()">Guardar asistencia</button>
+    <button class="btn-save" onclick="guardarAsistencia()">Guardar y Descargar Excel</button>
   </div>
 
-  <a href="Sistemas.html" class="btn-regresar">
-    <i class="fa fa-arrow-left"></i> Regresar al inicio
-  </a>
+  <a href="Sistemas.html" class="btn-regresar"><i class="fa fa-arrow-left"></i>Regresar</a>
+
+  <!-- Librería SheetJS -->
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 
   <script>
-    // Mostrar fecha actual en formato dd/mm/yyyy
-    const fechaElem = document.getElementById('fechaActual');
-    const hoy = new Date();
-    const dia = String(hoy.getDate()).padStart(2, '0');
-    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
-    const anio = hoy.getFullYear();
-    fechaElem.textContent = `Fecha actual: ${dia}/${mes}/${anio}`;
+    // Mostrar la fecha actual en formato largo
+    const fechaDiv = document.getElementById('fechaActual');
+    const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    fechaDiv.textContent = new Date().toLocaleDateString('es-MX', opcionesFecha);
 
-    function guardarAsistencia() {
-      // Aquí podrías agregar validaciones si quieres, por ejemplo, asegurarte que todos tienen opción seleccionada
+ function guardarAsistencia() {
+  const filas = document.querySelectorAll('tbody tr');
+  let datos = [];
 
-      alert("Asistencia guardada correctamente.");
-    }
+  // Obtener la fecha actual en formato dd/mm/yyyy
+  const hoy = new Date();
+  const dia = String(hoy.getDate()).padStart(2, '0');
+  const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+  const anio = hoy.getFullYear();
+  const fechaFormato = `${dia}/${mes}/${anio}`;
+
+  // Agregar encabezados incluyendo la columna Día
+  datos.push(["#", "Nombre del Estudiante", "Estado de Asistencia", "Día"]);
+
+  for(let fila of filas) {
+    const celdas = fila.querySelectorAll('td');
+    const numero = celdas[0].textContent.trim();
+    const nombre = celdas[1].textContent.trim();
+
+    const radios = fila.querySelectorAll('input[type="radio"]');
+    let estado = "Sin seleccionar";
+
+    radios.forEach(radio => {
+      if (radio.checked) {
+        if (radio.value === "asistio") estado = "Asistió";
+        else if (radio.value === "no_asistio") estado = "No asistió";
+        else if (radio.value === "llego_tarde") estado = "Llegó tarde";
+      }
+    });
+
+    datos.push([numero, nombre, estado, fechaFormato]);
+  }
+
+  const ws = XLSX.utils.aoa_to_sheet(datos);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Asistencia");
+  XLSX.writeFile(wb, "asistencia_grupo_6503.xlsx");
+}
+    
+  </script>
   </script>
 </body>
 </html>

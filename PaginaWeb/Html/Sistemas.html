@@ -40,6 +40,11 @@
       0% { background-position: 0% 0%; }
       100% { background-position: 100% 100%; }
     }
+    .docente-nombre {
+  font-size: 1.8rem;  /* o 24px */
+  font-weight: bold;
+  color: #fff;        /* o cualquier color que combine con el fondo */
+}
 
     .header {
       width: 100%;
@@ -64,7 +69,7 @@
     }
 
     .docente-nombre {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       font-weight: bold;
       color: white;
     }
@@ -166,9 +171,9 @@
   <div id="mySidebar" class="sidebar">
     <span class="closebtn" onclick="closeNav()">&times;</span>
     <a href="#">Inicio</a>
-    <a href="#">Perfil</a>
-    <a href="#">Ajustes</a>
-    <a href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+    <a href="Perfil.html  ">Perfil</a>
+    <a href="Ajustes.html">Ajustes</a>
+    <a href="Iniciarsecion.html" onclick="cerrarSesion()">Cerrar sesión</a>
   </div>
 
   <div class="header">
@@ -244,6 +249,21 @@
       window.location.href = "login.html";
     }
   </script>
+
+
+
+   <script>
+  const cuentaActiva = JSON.parse(localStorage.getItem('usuarioActivo'));
+  
+  if (cuentaActiva && cuentaActiva.nombre) {
+    document.getElementById('docenteNombre').textContent = `Bienvenido, ${cuentaActiva.nombre}`;
+  } else {
+    // Si no hay sesión activa, redirige al login
+    window.location.href = 'login.html';
+  }
+</script>
+
+
 </body>
 <script src="../js/modal.js"> </script>
 </html>
