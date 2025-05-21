@@ -7,12 +7,12 @@
   <title>Iniciar Sesión</title>
 
   <!-- Google Fonts y Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <!-- Estilos reutilizados -->
-  <link rel="stylesheet" href="../css/seleccionopcion.css">
-  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="stylesheet" href="../css/seleccionopcion.css" />
+  <link rel="stylesheet" href="../css/modal.css" />
 
   <style>
     html {
@@ -144,6 +144,7 @@
       font-size: 1.2rem;
       width: 100%;
       margin-top: 20px;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -203,53 +204,132 @@
     <h1>Iniciar Sesión</h1>
     <div class="subtitle">Introduce tus credenciales</div>
     <div class="divider"></div>
-    <form id="formLogin" method="POST">
-      <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
-      <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required>
-      <button type="submit" class="btn">
-        <i class="fas fa-sign-in-alt"></i> Entrar
-      </button>
-    </form>
+
+    <form id="formCrearCuenta" novalidate>
+      <input type="text" name="usuario" placeholder="Correo o Matrícula" required />
+      <input type="password" name="contraseña" placeholder="Contraseña" required />
+      <button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i> Entrar</button>
 
 
-    <a href="olvidecontraseña.html" class="forgot-password">¿Olvidé mi contraseña?</a>
+      <a href="olvidecontraseña.html" class="forgot-password">¿Olvidé mi contraseña?</a>
 
-    <a href="login.html" class="btn-small">
-      <i class="fas fa-arrow-left"></i> Regresar
-    </a>
+      <!-- Cambia el href si quieres que regrese a otra página -->
+      <a href="login.html" class="btn-small">
+        <i class="fas fa-arrow-left"></i> Regresar
+      </a>
+
+      <div id="mensajeLogin"></div>`
+
+
   </div>
+
   <!-- Botones flotantes -->
-<div class="about-btn"><i class="fas fa-info-circle"></i></div>
-<div class="contact-btn"><i class="fas fa-phone-alt"></i></div>
+  <div class="about-btn" title="Sobre el Proyecto"><i class="fas fa-info-circle"></i></div>
+  <div class="contact-btn" title="Contacto"><i class="fas fa-phone-alt"></i></div>
 
-    <!-- Modal "Sobre el Proyecto" -->
-    <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeAbout">&times;</span>
-            <h2><i class="fas fa-info-circle"></i> Sobre el Proyecto</h2>
-            <p>
-                Este proyecto integrador tiene como objetivo desarrollar una solución digital que facilite la gestión y seguimiento de procesos escolares, promoviendo el uso de herramientas tecnológicas accesibles, intuitivas y funcionales para estudiantes y docentes.
-            </p>
-        </div>
+  <!-- Modal "Sobre el Proyecto" -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeAbout">&times;</span>
+      <h2><i class="fas fa-info-circle"></i> Sobre el Proyecto</h2>
+      <p>
+        Este proyecto integrador tiene como objetivo desarrollar una solución digital que facilite la gestión y
+        seguimiento de procesos escolares, promoviendo el uso de herramientas tecnológicas accesibles, intuitivas y
+        funcionales para estudiantes y docentes.
+      </p>
     </div>
+  </div>
 
- 
-
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Contacto</h2>
-            <ul>
-                <li><i class="fas fa-phone-alt"></i> Teléfono: +52 713 100 4557</li>
-                <li><i class="fas fa-envelope"></i> Correo: alexanderalvaro742@gmail.com</li>
-                <li><i class="fab fa-whatsapp"></i> WhatsApp: +52 713 100 4557</li>
-            </ul>
-        </div>
+  <!-- Modal "Contacto" -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeContact">&times;</span>
+      <h2>Contacto</h2>
+      <ul>
+        <li><i class="fas fa-phone-alt"></i> Teléfono: +52 713 100 4557</li>
+        <li><i class="fas fa-envelope"></i> Correo: alexanderalvaro742@gmail.com</li>
+        <li><i class="fab fa-whatsapp"></i> WhatsApp: +52 713 100 4557</li>
+      </ul>
     </div>
+  </div>
+  <div id="mensajeLogin"></div>
+
+  <script src="../js/validarLogin.js"></script>
+  <script src="../js/modal.js"></script>
+
+  <script>
+    // Mejor manejo del cierre de modales
+    document.addEventListener('DOMContentLoaded', () => {
+      const aboutBtn = document.querySelector('.about-btn');
+      const contactBtn = document.querySelector('.contact-btn');
+      const aboutModal = document.getElementById('aboutModal');
+      const contactModal = document.getElementById('contactModal');
+      const closeAbout = document.getElementById('closeAbout');
+      const closeContact = document.getElementById('closeContact');
+
+      aboutBtn.addEventListener('click', () => aboutModal.style.display = 'block');
+      contactBtn.addEventListener('click', () => contactModal.style.display = 'block');
+
+      closeAbout.addEventListener('click', () => aboutModal.style.display = 'none');
+      closeContact.addEventListener('click', () => contactModal.style.display = 'none');
+
+      // Cerrar modal si clic afuera
+      window.addEventListener('click', e => {
+        if (e.target === aboutModal) aboutModal.style.display = 'none';
+        if (e.target === contactModal) contactModal.style.display = 'none';
+      });
+    });
+  </script>
+
+  <script>
+    const formLogin = document.getElementById('formCrearCuenta');
+    const mensajeLogin = document.getElementById('mensajeLogin');
+
+    formLogin.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const usuarioIngresado = formLogin.usuario.value.trim().toLowerCase();
+      const contraseñaIngresada = formLogin.contraseña.value;
+
+      if (!usuarioIngresado || !contraseñaIngresada) {
+        mensajeLogin.style.color = 'red';
+        mensajeLogin.textContent = 'Por favor completa todos los campos.';
+        return;
+      }
+
+      // Obtener cuentas guardadas en localStorage
+      const cuentas = JSON.parse(localStorage.getItem('cuentas')) || [];
+
+      // Buscar usuario por correo o matrícula (ignorando mayúsculas/minúsculas)
+      const cuentaEncontrada = cuentas.find(cuenta =>
+        cuenta.correo.toLowerCase() === usuarioIngresado ||
+        cuenta.matricula.toLowerCase() === usuarioIngresado
+      );
+
+      if (!cuentaEncontrada) {
+        mensajeLogin.style.color = 'red';
+        mensajeLogin.textContent = 'Usuario o contraseña incorrectos.';
+        return;
+      }
+
+      // Verificar contraseña
+      if (cuentaEncontrada.contraseña !== contraseñaIngresada) {
+        mensajeLogin.style.color = 'red';
+        mensajeLogin.textContent = 'Usuario o contraseña incorrectos.';
+        return;
+      }
+
+      // Login exitoso
+      mensajeLogin.style.color = 'green';
+      mensajeLogin.textContent = `Bienvenido, ${cuentaEncontrada.nombre}!`;
+
+      localStorage.setItem('usuarioActivo', JSON.stringify(cuentaEncontrada));
+
+      window.location.href = 'seleccion_carrea.html';
+    });
+  </script>
 
 
 </body>
-<script src="../js/validarLogin.js"></script>
-<script src= "../js/modal.js"></script>
 
 </html>

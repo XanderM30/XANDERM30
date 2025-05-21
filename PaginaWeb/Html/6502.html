@@ -172,10 +172,17 @@
       </tbody>
     </table>
 
-    <button class="btn-save"><i class="fas fa-check"></i> Guardar Asistencia</button><br>
+    <button class="btn-save" onclick="mostrarMensaje()">
+  <i class="fas fa-check"></i> Guardar Asistencia
+</button><br>
+
+<!-- Contenedor para el mensaje -->
+<div id="mensaje" style="display: none; color: green; font-weight: bold; margin-top: 10px;">
+  Lista guardada exitosamente
+</div>
     <a href="Sistemas.html"><i class="btn-small"><i class="fas fa-arrow-left"></i> Regresar</a>
     
-  </div>
+  
   
 
 </body>
@@ -186,5 +193,15 @@
   const fechaFormateada = fecha.toLocaleDateString('es-MX', opciones);
   document.getElementById('fechaActual').textContent = fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
 </script>
+<script>
+  function mostrarMensaje() {
+    const mensaje = document.getElementById("mensaje");
+    mensaje.style.display = "block";
 
+    // Opcional: ocultar el mensaje después de unos segundos
+    setTimeout(() => {
+      mensaje.style.display = "none";
+    }, 3000); // 3000 milisegundos = 3 segundos
+  }
+</script>
 </html>
