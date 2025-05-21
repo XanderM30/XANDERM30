@@ -50,7 +50,7 @@
     }
 
     .container {
-      max-width: 850px;
+      max-width: 900px;
       margin: 50px auto;
       background-color: rgba(255, 255, 255, 0.95);
       color: #301C3F;
@@ -67,14 +67,31 @@
 
     th, td {
       border: 1px solid #ccc;
-      padding: 14px;
+      padding: 12px 10px;
       text-align: left;
       font-size: 1rem;
+      vertical-align: middle;
     }
 
     th {
       background-color: #D7AC71;
       color: #301C3F;
+      text-align: center;
+    }
+
+    td.options {
+      text-align: center;
+    }
+
+    label {
+      margin: 0 10px;
+      cursor: pointer;
+      font-weight: normal;
+    }
+
+    input[type="radio"] {
+      margin-right: 6px;
+      cursor: pointer;
     }
 
     .btn-save {
@@ -96,49 +113,35 @@
       transform: scale(1.05);
     }
 
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
+    .fecha {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #fff;
     }
 
-    .back-link i {
+    .btn-regresar {
+      display: inline-block;
+      margin: 100px 30px 0;
+      background-color: transparent;
+      color: white;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border: 2px solid white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-regresar i {
       margin-right: 8px;
     }
-    .fecha {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #fff;
-}
 
-.btn-regresar {
-  display: inline-block;
-  margin: 100px 30px 0;
-  background-color: transparent;
-  color: white;
-  font-size: 1.1rem;
-  text-decoration: none;
-  border: 2px solid white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.btn-regresar i {
-  margin-right: 8px;
-}
-
-.btn-regresar:hover {
-  background-color: #D7AC71;
-  color: #301C3F;
-  border-color: #D7AC71;
-}
-
-
+    .btn-regresar:hover {
+      background-color: #D7AC71;
+      color: #301C3F;
+      border-color: #D7AC71;
+    }
   </style>
 </head>
 
@@ -146,7 +149,7 @@
   <div class="background-decor"></div>
 
   <div class="header">Asistencia - Grupo 6502</div>
-<div class="fecha" id="fechaActual"></div>
+  <div class="fecha" id="fechaActual"></div>
 
   <div class="container">
     <table>
@@ -154,54 +157,85 @@
         <tr>
           <th>#</th>
           <th>Nombre del Estudiante</th>
-          <th>Asistencia</th>
+          <th>Asistió</th>
+          <th>No asistió</th>
+          <th>Llegó tarde</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>1</td>
-          <td>Juan Pérez</td>
-          <td><input type="checkbox"></td>
+          <td>Bruno Aguilar Rivera</td>
+          <td class="options"><input type="radio" name="asistencia1" value="asistio" id="asistio1"><label for="asistio1">✔</label></td>
+          <td class="options"><input type="radio" name="asistencia1" value="no_asistio" id="noasistio1"><label for="noasistio1">✘</label></td>
+          <td class="options"><input type="radio" name="asistencia1" value="llego_tarde" id="llegotarde1"><label for="llegotarde1">⏰</label></td>
         </tr>
         <tr>
           <td>2</td>
-          <td>Lucía Gómez</td>
-          <td><input type="checkbox"></td>
+          <td>Sofía Ramírez Luna</td>
+          <td class="options"><input type="radio" name="asistencia2" value="asistio" id="asistio2"><label for="asistio2">✔</label></td>
+          <td class="options"><input type="radio" name="asistencia2" value="no_asistio" id="noasistio2"><label for="noasistio2">✘</label></td>
+          <td class="options"><input type="radio" name="asistencia2" value="llego_tarde" id="llegotarde2"><label for="llegotarde2">⏰</label></td>
         </tr>
-        <!-- Puedes duplicar esta fila para agregar más estudiantes -->
+        <tr>
+          <td>3</td>
+          <td>Andrés Molina Castañeda</td>
+          <td class="options"><input type="radio" name="asistencia3" value="asistio" id="asistio3"><label for="asistio3">✔</label></td>
+          <td class="options"><input type="radio" name="asistencia3" value="no_asistio" id="noasistio3"><label for="noasistio3">✘</label></td>
+          <td class="options"><input type="radio" name="asistencia3" value="llego_tarde" id="llegotarde3"><label for="llegotarde3">⏰</label></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Mariana Torres Beltrán</td>
+          <td class="options"><input type="radio" name="asistencia4" value="asistio" id="asistio4"><label for="asistio4">✔</label></td>
+          <td class="options"><input type="radio" name="asistencia4" value="no_asistio" id="noasistio4"><label for="noasistio4">✘</label></td>
+          <td class="options"><input type="radio" name="asistencia4" value="llego_tarde" id="llegotarde4"><label for="llegotarde4">⏰</label></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Iván Castro Morales</td>
+          <td class="options"><input type="radio" name="asistencia5" value="asistio" id="asistio5"><label for="asistio5">✔</label></td>
+          <td class="options"><input type="radio" name="asistencia5" value="no_asistio" id="noasistio5"><label for="noasistio5">✘</label></td>
+          <td class="options"><input type="radio" name="asistencia5" value="llego_tarde" id="llegotarde5"><label for="llegotarde5">⏰</label></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Fernanda Salazar Díaz</td>
+          <td class="options"><input type="radio" name="asistencia6" value="asistio" id="asistio6"><label for="asistio6">✔</label></td>
+          <td class="options"><input type="radio" name="asistencia6" value="no_asistio" id="noasistio6"><label for="noasistio6">✘</label></td>
+          <td class="options"><input type="radio" name="asistencia6" value="llego_tarde" id="llegotarde6"><label for="llegotarde6">⏰</label></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Eduardo Martínez López</td>
+          <td class="options"><input type="radio" name="asistencia7" value="asistio" id="asistio7"><label for="asistio7">✔</label></td>
+          <td class="options"><input type="radio" name="asistencia7" value="no_asistio" id="noasistio7"><label for="noasistio7">✘</label></td>
+          <td class="options"><input type="radio" name="asistencia7" value="llego_tarde" id="llegotarde7"><label for="llegotarde7">⏰</label></td>
+        </tr>
       </tbody>
     </table>
 
-    <button class="btn-save" onclick="mostrarMensaje()">
-  <i class="fas fa-check"></i> Guardar Asistencia
-</button><br>
+    <button class="btn-save" onclick="guardarAsistencia()">Guardar asistencia</button>
+  </div>
 
-<!-- Contenedor para el mensaje -->
-<div id="mensaje" style="display: none; color: green; font-weight: bold; margin-top: 10px;">
-  Lista guardada exitosamente
-</div>
-    <a href="Sistemas.html"><i class="btn-small"><i class="fas fa-arrow-left"></i> Regresar</a>
-    
-  
-  
+  <a href="Sistemas.html" class="btn-regresar">
+    <i class="fa fa-arrow-left"></i> Regresar al inicio
+  </a>
 
+  <script>
+    // Mostrar fecha actual en formato dd/mm/yyyy
+    const fechaElem = document.getElementById('fechaActual');
+    const hoy = new Date();
+    const dia = String(hoy.getDate()).padStart(2, '0');
+    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+    const anio = hoy.getFullYear();
+    fechaElem.textContent = `Fecha actual: ${dia}/${mes}/${anio}`;
+
+    function guardarAsistencia() {
+      // Aquí podrías agregar validaciones si quieres, por ejemplo, asegurarte que todos tienen opción seleccionada
+
+      alert("Asistencia guardada correctamente.");
+    }
+  </script>
 </body>
-<script>
-  // Mostrar la fecha actual
-  const fecha = new Date();
-  const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const fechaFormateada = fecha.toLocaleDateString('es-MX', opciones);
-  document.getElementById('fechaActual').textContent = fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
-</script>
-<script>
-  function mostrarMensaje() {
-    const mensaje = document.getElementById("mensaje");
-    mensaje.style.display = "block";
-
-    // Opcional: ocultar el mensaje después de unos segundos
-    setTimeout(() => {
-      mensaje.style.display = "none";
-    }, 3000); // 3000 milisegundos = 3 segundos
-  }
-</script>
 </html>

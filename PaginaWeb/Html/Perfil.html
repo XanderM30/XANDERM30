@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Perfil docente</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+<style>
+  body {
+    background: #402F4E; /* tu fondo morado oscuro */
+    font-family: 'Montserrat', sans-serif;
+    color: #EAE3D2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .perfil-container {
+    background: #2E1B47; /* un morado más oscuro para el card */
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+    width: 450px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 30px;
+  }
+
+  .foto-wrapper {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 35px;
+  }
+
+  #fotoPerfil {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #D7AC71;
+    box-shadow: 0 5px 15px rgba(215, 172, 113, 0.7);
+    cursor: pointer;
+    transition: transform 0.25s ease;
+    background-color: #5C4979; /* respaldo si la imagen no carga */
+  }
+
+  #fotoPerfil:hover {
+    transform: scale(1.1);
+  }
+
+  label[for="inputFoto"] {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #D7AC71;
+    color: #2E1B47;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.25);
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+
+  label[for="inputFoto"]:hover,
+  label[for="inputFoto"]:focus {
+    background-color: #B9924D;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  .datos-perfil {
+    width: 100%;
+  }
+
+  .campo {
+    margin-bottom: 25px;
+  }
+
+  .campo strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    letter-spacing: 0.03em;
+    color: #D7AC71;
+  }
+
+  .valor {
+    background: #5C4979;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 1.3rem;
+    color: #EAE3D2;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+    user-select: text;
+    overflow-wrap: break-word;
+  }
+
+  @media (max-width: 480px) {
+    .perfil-container {
+      width: 100%;
+      padding: 30px 20px;
+    }
+
+    #fotoPerfil, .foto-wrapper {
+      width: 130px;
+      height: 130px;
+    }
+
+    label[for="inputFoto"] {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+    }
+
+    .valor {
+      font-size: 1.1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <section class="perfil-container" role="main" aria-label="Perfil del docente">
+    <div class="foto-wrapper">
+      <img id="fotoPerfil" src="https://i.pravatar.cc/160" alt="Foto del docente" tabindex="0" />
+      <label for="inputFoto" tabindex="0" role="button" aria-label="Cambiar foto del perfil">Cambiar foto</label>
+      <input type="file" id="inputFoto" accept="image/*" />
+    </div>
+
+    <div class="datos-perfil">
+      <div class="campo">
+        <strong>Nombre</strong>
+        <div class="valor" id="nombrePerfil">Cargando...</div>
+      </div>
+      <div class="campo">
+        <strong>Apellido</strong>
+        <div class="valor" id="apellidoPerfil"></div>
+      </div>
+      <div class="campo">
+        <strong>Matrícula</strong>
+        <div class="valor" id="matriculaPerfil"></div>
+      </div>
+      <div class="campo">
+        <strong>Correo electrónico</strong>
+        <div class="valor" id="correoPerfil"></div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  const fotoPerfil = document.getElementById('fotoPerfil');
+  const inputFoto = document.getElementById('inputFoto');
+
+  const nombrePerfil = document.getElementById('nombrePerfil');
+  const apellidoPerfil = document.getElementById('apellidoPerfil');
+  const matriculaPerfil = document.getElementById('matriculaPerfil');
+  const correoPerfil = document.getElementById('correoPerfil');
+
+  function cargarDatosPerfil() {
+    const cuentasJSON = localStorage.getItem('cuentas');
+    if (!cuentasJSON) {
+      nombrePerfil.textContent = 'No hay cuentas guardadas';
+      apellidoPerfil.textContent = '';
+      matriculaPerfil.textContent = '';
+      correoPerfil.textContent = '';
+      return;
+    }
+    const cuentas = JSON.parse(cuentasJSON);
+    if (!cuentas.length) {
+      nombrePerfil.textContent = 'No hay cuentas guardadas';
+      apellidoPerfil.textContent = '';
+      matriculaPerfil.textContent = '';
+      correoPerfil.textContent = '';
+      return;
+    }
+    const cuenta = cuentas[0];
+
+    nombrePerfil.textContent = cuenta.nombre || '';
+    apellidoPerfil.textContent = cuenta.apellido || '';
+    matriculaPerfil.textContent = cuenta.matricula || '';
+    correoPerfil.textContent = cuenta.correo || '';
+
+    if(cuenta.foto){
+      fotoPerfil.src = cuenta.foto;
+    }
+  }
+
+  function guardarFotoBase64(base64img) {
+    const cuentasJSON = localStorage.getItem('cuentas');
+    if (!cuentasJSON) return;
+    const cuentas = JSON.parse(cuentasJSON);
+    if (!cuentas.length) return;
+
+    cuentas[0].foto = base64img;
+    localStorage.setItem('cuentas', JSON.stringify(cuentas));
+  }
+
+  inputFoto.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      fotoPerfil.src = ev.target.result;
+      guardarFotoBase64(ev.target.result);
+    };
+    reader.readAsDataURL(file);
+  });
+
+  cargarDatosPerfil();
+</script>
+
+</body>
+</html>
