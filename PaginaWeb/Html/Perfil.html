@@ -189,69 +189,78 @@
       </div>
     </div>
   </section>
+<script>
+  const fotoPerfil = document.getElementById('fotoPerfil');
+  const inputFoto = document.getElementById('inputFoto');
 
-  <script>
-    const fotoPerfil = document.getElementById('fotoPerfil');
-    const inputFoto = document.getElementById('inputFoto');
+  const nombrePerfil = document.getElementById('nombrePerfil');
+  const apellidoPerfil = document.getElementById('apellidoPerfil');
+  const matriculaPerfil = document.getElementById('matriculaPerfil');
+  const correoPerfil = document.getElementById('correoPerfil');
 
-    const nombrePerfil = document.getElementById('nombrePerfil');
-    const apellidoPerfil = document.getElementById('apellidoPerfil');
-    const matriculaPerfil = document.getElementById('matriculaPerfil');
-    const correoPerfil = document.getElementById('correoPerfil');
-
-    function cargarDatosPerfil() {
-      const cuentasJSON = localStorage.getItem('cuentas');
-      if (!cuentasJSON) {
-        nombrePerfil.textContent = 'No hay cuentas guardadas';
-        apellidoPerfil.textContent = '';
-        matriculaPerfil.textContent = '';
-        correoPerfil.textContent = '';
-        return;
-      }
-      const cuentas = JSON.parse(cuentasJSON);
-      if (!cuentas.length) {
-        nombrePerfil.textContent = 'No hay cuentas guardadas';
-        apellidoPerfil.textContent = '';
-        matriculaPerfil.textContent = '';
-        correoPerfil.textContent = '';
-        return;
-      }
-      const cuenta = cuentas[0];
-
-      nombrePerfil.textContent = cuenta.nombre || '';
-      apellidoPerfil.textContent = cuenta.apellido || '';
-      matriculaPerfil.textContent = cuenta.matricula || '';
-      correoPerfil.textContent = cuenta.correo || '';
-
-      if (cuenta.foto) {
-        fotoPerfil.src = cuenta.foto;
-      }
+  function cargarDatosPerfil() {
+    const matriculaLogueado = localStorage.getItem('usuarioLogueado');
+    if (!matriculaLogueado) {
+      nombrePerfil.textContent = 'No has iniciado sesión';
+      return;
     }
 
-    function guardarFotoBase64(base64img) {
-      const cuentasJSON = localStorage.getItem('cuentas');
-      if (!cuentasJSON) return;
-      const cuentas = JSON.parse(cuentasJSON);
-      if (!cuentas.length) return;
-
-      cuentas[0].foto = base64img;
-      localStorage.setItem('cuentas', JSON.stringify(cuentas));
+    const cuentasJSON = localStorage.getItem('cuentas');
+    if (!cuentasJSON) {
+      nombrePerfil.textContent = 'No hay cuentas guardadas';
+      return;
     }
 
-    inputFoto.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
+    const cuentas = JSON.parse(cuentasJSON);
+    const cuenta = cuentas.find(c => c.matricula === matriculaLogueado);
 
-      const reader = new FileReader();
-      reader.onload = function (ev) {
-        fotoPerfil.src = ev.target.result;
-        guardarFotoBase64(ev.target.result);
-      };
-      reader.readAsDataURL(file);
-    });
+    if (!cuenta) {
+      nombrePerfil.textContent = 'Cuenta no encontrada';
+      return;
+    }
 
-    cargarDatosPerfil();
-  </script>
+    nombrePerfil.textContent = cuenta.nombre || '';
+    apellidoPerfil.textContent = cuenta.apellido || '';
+    matriculaPerfil.textContent = cuenta.matricula || '';
+    correoPerfil.textContent = cuenta.correo || '';
+    
+    if (cuenta.foto) {
+      fotoPerfil.src = cuenta.foto;
+    }
+  }
+
+  function guardarFotoBase64(base64img) {
+    const matriculaLogueado = localStorage.getItem('usuarioLogueado');
+    const cuentasJSON = localStorage.getItem('cuentas');
+    if (!cuentasJSON || !matriculaLogueado) return;
+
+    const cuentas = JSON.parse(cuentasJSON);
+    const cuentaIndex = cuentas.findIndex(c => c.matricula === matriculaLogueado);
+    if (cuentaIndex === -1) return;
+
+    cuentas[cuentaIndex].foto = base64img;
+    localStorage.setItem('cuentas', JSON.stringify(cuentas));
+  }
+
+  inputFoto.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (ev) {
+      fotoPerfil.src = ev.target.result;
+      guardarFotoBase64(ev.target.result);
+    };
+    reader.readAsDataURL(file);
+  });
+
+  document.addEventListener('DOMContentLoaded', cargarDatosPerfil);
+</script>
+<script src="../js/validarLogin.js"></script>
+<script>
+  console.log('🚀 validarLogin.js cargado');
+</script>
+
 </body>
 
 </html>
