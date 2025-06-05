@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Proyecto de Lenguaje de Interfaz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Estilo base + íconos -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 0 30px 30px 30px;
       font-family: 'Open Sans', sans-serif;
       background: #402F4E;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+    }
+
+    /* Modo oscuro */
+    body.tema-oscuro {
+      background: #1E1428;
+      color: #FFD98A;
     }
 
     .contenedor {
@@ -30,11 +40,26 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       color: #402F4E;
       animation: fadeIn 0.8s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Ajustes para modo oscuro */
+    body.tema-oscuro .contenedor {
+      background-color: #3a2d4b;
+      color: #ffd98a;
+      box-shadow: 0 4px 20px rgba(255 217 138 / 0.3);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -43,22 +68,40 @@
       margin-bottom: 10px;
     }
 
+    body.tema-oscuro h1 {
+      color: #FFD98A;
+    }
+
     h2 {
       font-size: 1.3rem;
       margin-bottom: 20px;
       color: #402F4E;
     }
 
+    body.tema-oscuro h2 {
+      color: #FFD98A;
+    }
+
     .descripcion {
       font-size: 1.1rem;
       line-height: 1.6;
       margin-bottom: 25px;
+      color: #402F4E;
+    }
+
+    body.tema-oscuro .descripcion {
+      color: #ffd98a;
     }
 
     .icono-proyecto {
       font-size: 3rem;
       color: #D7AC71;
       margin-bottom: 15px;
+      text-align: center;
+    }
+
+    body.tema-oscuro .icono-proyecto {
+      color: #FFD98A;
     }
 
     .btn-volver {
@@ -72,14 +115,38 @@
       transition: background 0.3s ease;
       display: inline-block;
       margin-top: 20px;
+      margin-right: 10px;
     }
 
     .btn-volver:hover {
       background-color: #402F4E;
     }
+
+    /* Estilo toggle */
+    label[for="temaToggle"] {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      font-size: 1rem;
+      justify-content: center;
+    }
+
+    body.tema-oscuro label[for="temaToggle"] {
+      color: #ffd98a;
+    }
   </style>
 </head>
 <body>
+  <!-- Toggle modo oscuro -->
+  <label for="temaToggle">
+    <input type="checkbox" id="temaToggle" />
+    Modo Oscuro
+  </label>
 
   <div class="contenedor">
     <div class="icono-proyecto">
@@ -88,15 +155,26 @@
     <h1>Proyecto de Lenguaje de Interfaz</h1>
     <h2>Con el Ing. Lagunas</h2>
     <p class="descripcion">
-      Este proyecto tiene como objetivo crear una interfaz que permita controlar tres objetos físicos mediante una placa <strong>ESP32</strong>. La comunicación entre la interfaz y el microcontrolador se realizará a través de un protocolo adecuado (por ejemplo, serial, WiFi o Bluetooth).<br><br>
+      Este proyecto tiene como objetivo crear una interfaz que permita controlar tres objetos físicos mediante una placa <strong>ESP32</strong>. La comunicación entre la interfaz y el microcontrolador se realizará a través de un protocolo adecuado (por ejemplo, serial, WiFi o Bluetooth).<br /><br />
 
-      Se desarrollará una interfaz visual amigable que facilite la interacción del usuario para activar o desactivar dispositivos conectados, como pueden ser: luces, motores o ventiladores.<br><br>
+      Se desarrollará una interfaz visual amigable que facilite la interacción del usuario para activar o desactivar dispositivos conectados, como pueden ser: luces, motores o ventiladores.<br /><br />
 
       Este trabajo integrador busca aplicar conocimientos de diseño de interfaz, programación web o de escritorio, y comunicación con hardware.
     </p>
 
     <a href="seleccionopcion.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver</a>
+    <a href="Galeria.html" class="btn-volver"><i class="fas fa-image"></i> Galería</a>
   </div>
 
+  <script>
+    const toggle = document.getElementById('temaToggle');
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        document.body.classList.add('tema-oscuro');
+      } else {
+        document.body.classList.remove('tema-oscuro');
+      }
+    });
+  </script>
 </body>
 </html>

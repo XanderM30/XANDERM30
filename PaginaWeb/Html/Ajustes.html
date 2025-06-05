@@ -8,6 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
+    @keyframes backgroundGradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     body {
       margin: 0;
       font-family: 'Open Sans', sans-serif;
@@ -19,6 +25,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      color: #fff; /* texto blanco por defecto */
     }
 
     body.tema-oscuro {
@@ -27,37 +34,20 @@
       animation: none;
     }
 
-    @keyframes backgroundGradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
     .container {
-  background:  rgba(255, 255, 255, 0.95); /* blanco semitransparente fijo */
-  border-radius: 15px;
-  padding: 30px 40px;
-  width: 100%;
-  max-width: 450px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-  transition: background-color 0.3s;
-}
-  .square-container {
-      width: 80%;
-      max-width: 500px;
-      background-color: #fff;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 1s ease-out;
-      text-align: center;
-      color: #402F4E;
-      border: 2px solid red;  /* Para ver el borde del contenedor */
+      background: rgba(64, 47, 78, 0.8); /* semitransparente oscuro para legibilidad */
+      border-radius: 15px;
+      padding: 30px 40px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      transition: background-color 0.3s;
+      color: #fff; /* texto blanco */
     }
 
     body.tema-oscuro .container {
       background-color: rgba(48, 28, 63, 0.6);
+      color: #FFD98A;
     }
 
     h1 {
@@ -71,7 +61,7 @@
       display: block;
       margin: 20px 0 5px;
       font-weight: 600;
-      color: #FFD98A;
+      color: inherit;
     }
 
     input[type="text"] {
@@ -143,7 +133,7 @@
       align-items: center;
       margin-top: 12px;
       gap: 10px;
-      color: #FFD98A;
+      color: inherit;
     }
 
     .btn-save {
