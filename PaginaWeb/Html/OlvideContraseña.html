@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recuperar contraseña</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/modal.css" />
+  <style>
+    /* Estilos para centrar vertical y horizontalmente */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .center-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 450px;
+      width: 100%;
+      padding: 30px 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      color: #402F4E;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #402F4E;
+      font-size: 2rem;
+    }
+
+    label {
+      display: block;
+      margin: 20px 0 8px;
+      font-weight: 600;
+      color: #402F4E;
+      text-align: left;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #7a5a9c;
+      outline: none;
+      font-size: 1rem;
+      background-color: #f9f9f9;
+      color: #402F4E;
+      transition: border-color 0.3s;
+    }
+
+    input[type="email"]:focus {
+      border-color: #593c73;
+      background-color: #fff;
+    }
+
+    .error-message {
+      margin-top: 10px;
+      color: #d9534f;
+      font-weight: 600;
+      display: none;
+      text-align: left;
+    }
+
+    .btn-submit {
+      margin-top: 30px;
+      padding: 12px;
+      width: 100%;
+      background-color: #593c73;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: #7a5a9c;
+    }
+
+    .btn-back {
+      margin-top: 20px;
+      display: inline-block;
+      text-align: center;
+      color: #593c73;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid #593c73;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background-color: #593c73;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center-wrapper">
+    <div class="container">
+      <h1>Recuperar contraseña</h1>
+      <form id="recuperarForm" novalidate>
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="tuemail@ejemplo.com" required />
+        <div class="error-message" id="errorMsg">Por favor ingresa un correo válido.</div>
+        <button type="submit" class="btn-submit">Enviar enlace de recuperación</button>
+      </form>
+      <a href="Iniciarsecion.html" class="btn-back"><i class="fa fa-arrow-left"></i> Regresar al inicio de sesión</a>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('recuperarForm');
+    const emailInput = document.getElementById('email');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (!email || !emailValid) {
+        errorMsg.style.display = 'block';
+        emailInput.focus();
+      } else {
+        errorMsg.style.display = 'none';
+        alert(`Se ha enviado un enlace de recuperación a ${email}`);
+        form.reset();
+      }
+    });
+  </script>
+</body>
+
+</html>

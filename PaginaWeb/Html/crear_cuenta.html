@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <style>
+    <style>
     html {
       scroll-behavior: smooth;
     }
@@ -169,15 +169,15 @@
   <div class="background-decor"></div>
 
   <div class="square-container">
+    <div id="mensaje" class="message"></div>
     <div class="login-icon">
       <i class="fas fa-user-plus"></i>
-
     </div>
     <h1>Crear Cuenta</h1>
     <div class="subtitle">Ingresa tus datos</div>
     <div class="divider"></div>
 
-    <form id="formCrearCuenta" novalidate>
+    <form id="formCrearCuenta" method="POST" action="crear_cuenta.php" novalidate>
       <input type="text" name="nombre" placeholder="Nombre" required>
       <input type="text" name="apellido" placeholder="Apellido" required>
       <input type="text" name="matricula" placeholder="Matrícula de docente" required>
@@ -190,7 +190,6 @@
       </button>
     </form>
 
-    <div id="mensaje" class="message"></div>
 
     <!-- Botón de Regresar -->
     <a href="login.html" class="btn-small">
@@ -199,12 +198,11 @@
   </div>
 
   <script>
+    // Validación simple antes de enviar
     const form = document.getElementById('formCrearCuenta');
     const mensaje = document.getElementById('mensaje');
 
     form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
       const nombre = form.nombre.value.trim();
       const apellido = form.apellido.value.trim();
       const matricula = form.matricula.value.trim();
@@ -212,41 +210,40 @@
       const contraseña = form.contraseña.value;
       const confirmar = form.confirmar_contraseña.value;
 
-      // Validación simple
       if (!nombre || !apellido || !matricula || !correo || !contraseña || !confirmar) {
+        e.preventDefault();
         mensaje.style.color = 'red';
         mensaje.textContent = '⚠️ Por favor completa todos los campos.';
         return;
       }
 
       if (contraseña !== confirmar) {
+        e.preventDefault();
         mensaje.style.color = 'red';
         mensaje.textContent = '⚠️ Las contraseñas no coinciden.';
-        return;
       }
-
-      // Obtener cuentas guardadas en localStorage
-      let cuentas = JSON.parse(localStorage.getItem('cuentas')) || [];
-
-      // Validar que no exista el correo o matrícula
-      const existe = cuentas.some(cuenta => cuenta.correo === correo || cuenta.matricula === matricula);
-
-      if (existe) {
-        mensaje.style.color = 'red';
-        mensaje.textContent = '⚠️ Ya existe una cuenta con ese correo o matrícula.';
-        return;
-      }
-
-      // Guardar nueva cuenta
-      const nuevaCuenta = { nombre, apellido, matricula, correo, contraseña };
-      cuentas.push(nuevaCuenta);
-      localStorage.setItem('cuentas', JSON.stringify(cuentas));
-
-      mensaje.style.color = 'green';
-      mensaje.textContent = '✅ Cuenta creada exitosamente.';
-
-      form.reset();
     });
   </script>
+  <script>
+  // Función para leer parámetros de la URL
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  const mensajeDiv = document.getElementById('mensaje');
+  const error = getQueryParam('error');
+  const success = getQueryParam('success');
+
+  if (error) {
+    mensajeDiv.style.color = 'red';
+    mensajeDiv.textContent = '⚠️ ' + decodeURIComponent(error);
+  } else if (success) {
+    mensajeDiv.style.color = 'green';
+    mensajeDiv.textContent = '✔️ ' + decodeURIComponent(success);
+  }
+</script>
+
+
 </body>
 </html>
