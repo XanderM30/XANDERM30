@@ -5,6 +5,3 @@ Soy estudiante de Ingeniería en Sistemas Computacionales y me apasiona el desar
 <div align="center">
 
 
-
-</div>  📧 Correo: (opcional)
-💼 LinkedIn / Portafolio: (opcional)
